@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Adiciona o executável
-add_executable(tic_tac_toe src/tic_tac_toe.cpp)
+add_executable(tic_tac_toe src/main.cpp)
 
 # Adiciona as flags de compilação para threads
 find_package(Threads REQUIRED)

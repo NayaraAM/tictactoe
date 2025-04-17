@@ -1,0 +1,3 @@
+/home/nayaradeandrade/tictactoe-1/build/CMakeFiles/tic_tac_toe.dir
+/home/nayaradeandrade/tictactoe-1/build/CMakeFiles/edit_cache.dir
+/home/nayaradeandrade/tictactoe-1/build/CMakeFiles/rebuild_cache.dir
