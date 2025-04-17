@@ -50,12 +50,11 @@ public:
         // Utilizar variável de condição para alternância de turnos
         std::unique_lock<std::mutex> lock(this->board_mutex);
         this->turn_cv.wait(lock, [this, player]() {
-            return player == this->current_player && !this->game_over;
+            return player == this->current_player || this->game_over;
         });
 
-        if (this->board[row][col] != ' ' || this->game_over) {
-            return false; // Casa ocupada ou jogo já acabou
-        }
+        if (this->game_over || this->board[row][col] != ' ')
+            return false;
 
         this->board[row][col] = player;
         this->display_board();
@@ -161,7 +160,7 @@ private:
             int row = rand() % 3;
             int col = rand() % 3;
             if (this->game.make_move(this->symbol, row, col)) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
             }
         }
     }
@@ -169,6 +168,8 @@ private:
 
 // Função principal
 int main() {
+
+    srand(time(nullptr));
     // Inicializar o jogo e os jogadores
     TicTacToe jogo;
 
